@@ -33,9 +33,11 @@ class RideDetailView(APIView):
         weather_api = f"https://api.weather.gov/points/{data_to_send['start_lat']},{data_to_send['start_lng']}/"
         weather_api_response = fetchApi(weather_api)
 
+        # === point 1 === (get weather forecast)
         weather_forecast_list = fetchApi(
             weather_api_response["properties"]["forecast"])
 
+        # === point 2 === (get stations list)
         stations_list = fetchApi(
             weather_api_response["properties"]["observationStations"])
 
@@ -61,12 +63,31 @@ class RideDetailView(APIView):
             if nearest_value is None:
                 nearest_value = the_distance
                 nearest_station_obj = each_station
-            
+
             elif the_distance < nearest_value:
                 nearest_value = the_distance
                 nearest_station_obj = each_station
 
         data_to_send["stations_information"] = stations_list["features"]
+
+        # === POINT 3 === (Get nearest station)
         data_to_send["nearest_station"] = nearest_station_obj
+
+        # === POINT 4 === (Obtain weather for the trip's start time)
+        trip_started_date = data_to_send["started_at"]
+        nearest_station_id = nearest_station_obj["id"]
+
+        obtain_weather_endpoint = f"{nearest_station_id}/observations?start={trip_started_date}&limit=1"
+        obtain_weather_information = fetchApi(obtain_weather_endpoint)
+
+        weather_text_description = obtain_weather_information[
+            "features"][0]["properties"]["textDescription"]
+        temperature_value = obtain_weather_information["features"][0]["properties"]["temperature"]["value"]
+
+        # adding key, value pair in final json
+        data_to_send["obtain_weather_information"] = {
+            "weather_text_description": weather_text_description,
+            "temperature_value": temperature_value
+        }
 
         return Response(data_to_send)
