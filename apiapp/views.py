@@ -43,6 +43,8 @@ class RideDetailView(APIView):
 
         data_to_send["weather_information"] = weather_forecast_list["properties"]["periods"]
 
+        # === POINT 3 === (Get nearest station)
+
         record_of_all_stations = stations_list["features"]
 
         nearest_station_obj = {}
@@ -70,7 +72,6 @@ class RideDetailView(APIView):
 
         data_to_send["stations_information"] = stations_list["features"]
 
-        # === POINT 3 === (Get nearest station)
         data_to_send["nearest_station"] = nearest_station_obj
 
         # === POINT 4 === (Obtain weather for the trip's start time)
