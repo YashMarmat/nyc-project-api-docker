@@ -88,6 +88,7 @@ just download the csv and place it at project root level)
 long time)
 
 - Lastly, once done with the project, you can close the docker container
+
 `sudo docker-compose down`
 
 ## All set :)
