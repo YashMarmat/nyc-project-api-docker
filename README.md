@@ -15,6 +15,7 @@
 - Django Rest Framework
 - Sqlite database
 - Docker
+- Deployed on Render
 
 ## About_this_API
 Django application that serves a web service API for bicycle trip information in New York City. 
@@ -27,7 +28,9 @@ Provides following informations;
 
 ### List_of_Trips
 
-<b>GET</b> `http://127.0.0.1:8000/api/v1/`
+<b>Local API GET</b> `http://127.0.0.1:8000/api/v1/`
+
+<b>LIVE API GET</b> `https://nyc-django-render-project.onrender.com/api/v1/`
 
 This api displays all the users trip with pagination (2 results per page), the "count" object (provided django rest framework) tells total number of objects 
 present in this api request (for demo i have just taken 5 entries from the csv but you can enter more, more on this shortly). The "next" and "previous" objects 
@@ -38,7 +41,9 @@ contain links of the next and previous endpoints (here we basically showing the 
 </p>
 
 ### Single_Trip_Instance
-<b>GET</b> `http://127.0.0.1:8000/api/v1/33723`
+<b>Local API GET</b> `http://127.0.0.1:8000/api/v1/33723`
+
+<b>LIVE API GET</b> `https://nyc-django-render-project.onrender.com/api/v1/1`
 
 This api contains all the trip details of a single user, containing weather details, stations information, nearest station and trip start weather information
 , as shown below;
