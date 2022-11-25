@@ -69,7 +69,7 @@ after downloading/cloning the repository code, follow below steps:
 
 `http://127.0.0.1:8000/api/v1/<id>` (single ride, do mention the object id)
 
-- Test other csv data
+- <b>Test other csv data</b>
 
 - <b>Step 1</b> (open a new terminal window and use the following command, do not close any previous terminal)
 
@@ -80,7 +80,7 @@ after downloading/cloning the repository code, follow below steps:
 - <b>Step 2</b> (you can use any current format csv file from here https://s3.amazonaws.com/tripdata/index.html, 
 just download the csv and place it at project root level)
 
-* i have created a custom django admin command "customcsvextract" to build model objects (extracts data form csv).
+* i have created a custom django admin command "customcsvextract" to build model objects (extracts data form csv, requires csv path).
 
 `sudo docker-compose exec web python manage.py customcsvextract ./dummy_csv_data.csv`
 
