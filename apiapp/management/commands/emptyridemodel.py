@@ -4,7 +4,7 @@ from apiapp.models import RideModel
 
 class Command(BaseCommand):
 
-    help = 'will delete all the objects from Article model.'
+    help = 'will delete all the objects from RideModel.'
 
     def handle(self, *args, **options):
 
