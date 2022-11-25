@@ -8,7 +8,7 @@ import pytz
 
 class Command(BaseCommand):
 
-    help = 'This command extracts user names from csv and regsiter them in django db, uses Article model.'
+    help = 'This command extracts user names from csv and regsiter them in django db, uses RideModel model.'
 
     def add_arguments(self, parser):
         parser.add_argument(
